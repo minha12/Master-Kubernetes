@@ -5,7 +5,7 @@ We will use the k8s.gcr.io/echoserver Docker image, which is a simple HTTP serve
 Step 1: Create a Deployment
 Deploy the echo server using the following kubectl command:
 
-`kubectl create deployment echo-server --image=k8s.gcr.io/echoserver:1.10`
+`kubectl create deployment echo-server --image=kicbase/echo-server:1.0`
 
 This command creates a deployment named echo-server using the echoserver image.
 
@@ -60,6 +60,7 @@ Step 7: Clean Up
 Once you are done experimenting, you can delete the deployment and service to clean up:
 
 `kubectl delete service echo-server`
+
 `kubectl delete deployment echo-server`
 
 This ensures no resources are left running that could incur costs or utilize system resources.
