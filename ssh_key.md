@@ -73,3 +73,39 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 ```
 
 This confirms that your SSH key has been successfully added to your GitHub account and that you can communicate with GitHub securely using SSH.
+
+## Troubleshoot
+
+If you are prompted for your username and password when you attempt to push to GitHub, even though you have already set up SSH authentication, it's likely because your local Git repository is configured to use HTTPS URLs for the remote repository instead of SSH URLs. SSH keys will only work with SSH URLs.
+
+### Check Current Remote URL
+First, check what the current remote URL is for your repository. Open your terminal, navigate to your repository, and run:
+```
+git remote -v
+```
+This command will show you the URLs that Git has stored for the remote repository, typically named `origin`. If the URLs start with `https://`, then Git is set up to use HTTPS.
+
+### Switch to SSH
+If you find that the remote URL is an HTTPS URL, you can switch it to use SSH. You will need the SSH URL of your GitHub repository, which looks like git@github.com:username/repository.git.
+
+To change the URL, use the git remote set-url command:
+```
+git remote set-url origin git@github.com:username/repository.git
+```
+
+### Verify the Change
+To ensure that the remote URL has been changed, run:
+```
+git remote -v
+```
+
+Now, the output should show the SSH URL beginning with git@github.com.
+
+### Try Pushing Again
+Now that your repository is set up to use SSH, try pushing again:
+```
+git push
+```
+
+This time, it should not ask for your username and password if everything is set up correctly with SSH.
+
