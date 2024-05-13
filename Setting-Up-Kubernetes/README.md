@@ -11,20 +11,24 @@ Homebrew is a package manager for macOS. Open a terminal and install Homebrew by
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 Follow the instructions in the terminal to complete the installation.
-
+> Troubleshoot: Hombrew will be installed in `/opt/homebrew/bin`, if it is not added to path:
+> Run this command to append the Homebrew initialization to your .zprofile:
+>`echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile`
+> Activate the changes in your current shell session: 
 ### Install Docker Desktop for Mac (Apple Silicon)
 Download Docker Desktop for Mac with Apple Silicon support from [the official Docker website](https://www.docker.com/products/docker-desktop). This will also install the necessary virtualization support.
 Ensure Docker Desktop is running after installation.
 
-## Install kubectl:
+### Install kubectl:
 Kubectl is a Kubernetes command-line tool that allows you to run commands against Kubernetes clusters. Install it using Homebrew:
-```
+```bash
 brew install kubectl
 ```
 
-### Install Minikube:
+### Install Minikube
+
 Minikube is a tool that lets you run Kubernetes locally. Install it using Homebrew:
-```
+```bash
 brew install minikube
 ```
 
@@ -55,7 +59,7 @@ minikube dashboard
 ```
 This command will open up the Kubernetes dashboard in your default web browser.
 
-### Enable Addons:
+### Enable Addons:
 
 Minikube has several useful addons which you can enable or disable. For example, to enable metrics-server:
 ```
@@ -79,7 +83,7 @@ If you wish to delete your Minikube cluster and start fresh:
 minikube delete
 ```
 
-## Using Minikube:
+## Using Minikube:
 You can now use kubectl to interact with your cluster. Start deploying applications, services, etc., using the kubectl command-line tool.
 
 ### Deploy Example Application:
