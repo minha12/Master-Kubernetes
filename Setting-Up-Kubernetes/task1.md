@@ -12,9 +12,10 @@ Homebrew is a package manager for macOS. Open a terminal and install Homebrew by
 ```
 Follow the instructions in the terminal to complete the installation.
 > Troubleshoot: Hombrew will be installed in `/opt/homebrew/bin`, if it is not added to path:
-> Run this command to append the Homebrew initialization to your .zprofile:
+> (1) Run this command to append the Homebrew initialization to your .zprofile:
 >`echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile`
-> Activate the changes in your current shell session: 
+> (2) Activate the changes in your current shell session: `eval "$(/opt/homebrew/bin/brew shellenv)"`
+> (3) Run the following command to check if Homebrew is recognized: `brew --version`
 ### Install Docker Desktop for Mac (Apple Silicon)
 Download Docker Desktop for Mac with Apple Silicon support from [the official Docker website](https://www.docker.com/products/docker-desktop). This will also install the necessary virtualization support.
 Ensure Docker Desktop is running after installation.
