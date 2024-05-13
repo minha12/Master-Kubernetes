@@ -66,7 +66,7 @@ spec:
 
    - Attach to a running container:
      `kubectl attach my-pod -i`
-     (Troubleshoot: if the command doesn't work, try this `kubectl exec -it nginx-bf5d5cf98-6znm8 -- /bin/bash`)
+     (Troubleshoot: if the command doesn't work, try this `kubectl exec -it my-pod -- /bin/bash`)
 
    - Execute a command in a container:
      `kubectl exec my-pod -- ls /`
