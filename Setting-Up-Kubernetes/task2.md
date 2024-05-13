@@ -85,6 +85,9 @@ spec:
    - Label a pod:
      `kubectl label pods my-pod new-label=awesome`
 
+   - Filter the labeled pod:
+     `kubectl get pods -l new-label=awesome`
+
 7. Accessing Services:
    - Expose a deployment as a service:
      `kubectl expose deployment nginx --port=80 --type=NodePort`
