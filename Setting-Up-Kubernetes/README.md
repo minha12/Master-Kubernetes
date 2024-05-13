@@ -1,7 +1,8 @@
 # Kubernetes Cluster Management and Command Guide
 
 This repository contains guides and examples for setting up and managing Kubernetes clusters using Minikube, various `kubectl` commands, and practical deployment scenarios.
-
+> Minikube is an open-source tool designed to enable developers to set up and run a single-node Kubernetes cluster locally on their personal computer. It provides a straightforward way to learn and develop applications on Kubernetes without needing the resources and complexity of a full-scale cluster. Minikube runs on Windows, macOS, and Linux systems and includes everything needed to run a basic Kubernetes cluster, encapsulated within a virtual machine (VM).
+> 
 ## Contents
 
 - **task1.md**: Setup Guide for Minikube and Kubernetes on macOS (Apple Silicon)
