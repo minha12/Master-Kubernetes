@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  namespace: ingress-basic
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /service-one(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-one
+            port:
+              number: 80
+      - path: /service-two(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-two
+            port:
+              number: 80
