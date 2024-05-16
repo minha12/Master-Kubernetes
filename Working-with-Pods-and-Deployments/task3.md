@@ -47,3 +47,107 @@
 **Advanced Settings:**
 - Probe-level `terminationGracePeriodSeconds` provides finer control over container shutdown to handle probe failures gracefully.
 - Understand and possibly utilize per-probe `terminationGracePeriodSeconds` for nuanced management of container lifecycle during probe failures.
+
+## Configurations:
+
+- **Command-based Probe (exec)**:
+  ```yaml
+  livenessProbe:
+    exec:
+      command:
+      - cat
+      - /tmp/healthy
+    initialDelaySeconds: 5
+    periodSeconds: 5
+  ```
+
+- **HTTP Request Probe**:
+  ```yaml
+  livenessProbe:
+    httpGet:
+      path: /healthz
+      port: 8080
+      httpHeaders:
+      - name: Custom-Header
+        value: Awesome
+    initialDelaySeconds: 3
+    periodSeconds: 3
+  ```
+
+- **TCP Socket Probe**:
+  ```yaml
+  livenessProbe:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 15
+    periodSeconds: 10
+  ```
+
+- **gRPC Probe**:
+  ```yaml
+  livenessProbe:
+    grpc:
+      port: 2379
+    initialDelaySeconds: 10
+  ```
+
+#### Usage:
+- **Create the pod with the respective probe**:
+  ```bash
+  kubectl apply -f [file-path]
+  ```
+
+- **Check the Pod’s events**:
+  ```bash
+  kubectl describe pod [pod-name]
+  ```
+
+- **Check whether the Pod has been restarted**:
+  ```bash
+  kubectl get pod [pod-name]
+  ```
+
+#### Key Configurations:
+- `initialDelaySeconds`: Time before the probe starts checking.
+- `periodSeconds`: Frequency of the probe.
+- `failureThreshold`: Number of times the probe can fail before taking action.
+- `timeoutSeconds`: Number of seconds after which the probe times out.
+- `successThreshold`: Consecutive successes required for the probe to be considered successful after having failed.
+
+#### Example YAML for a Deployment utilizing probes:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+      - name: example-container
+        image: example-image
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+```
+
+By setting these probes, Kubernetes can better manage the container lifecycle, ensuring containers are killed and restarted as necessary and only receiving traffic when actually ready.

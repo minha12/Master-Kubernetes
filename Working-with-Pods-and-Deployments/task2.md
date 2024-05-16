@@ -43,3 +43,63 @@
 **Advanced Features:**
 - **Proportional Scaling:** During a rolling update, scale up or down depending on the status of old and new replicas.
 - **Canary Deployments:** Deploy new versions to a subset of users before a full rollout.
+
+The provided text details various operations related to managing Kubernetes Deployments. Here are the commands referenced in the text along with their descriptions:
+
+# Deployment Management Commands
+
+1. **`kubectl apply -f [file.yaml]`**
+   - Usage: Apply a configuration to a resource from a file or stdin.
+   - Example: `kubectl apply -f nginx-deployment.yaml`
+
+2. **`kubectl get deployments`**
+   - Usage: List all deployments in the current namespace.
+   - Example: `kubectl get deployments`
+
+3. **`kubectl rollout status deployment/[deployment-name]`**
+   - Usage: Watch the status of the latest rollout until it's complete.
+   - Example: `kubectl rollout status deployment/nginx-deployment`
+
+4. **`kubectl get rs`**
+   - Usage: List the ReplicaSets managed by a specific Deployment.
+   - Example: `kubectl get rs`
+
+5. **`kubectl set image deployment/[deployment-name] [container-name]=[new-image]`**
+   - Usage: Update the image of a container in a deployment.
+   - Example: `kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1`
+
+6. **`kubectl edit deployment/[deployment-name]`**
+   - Usage: Edit the deployment object interactively in the default editor.
+   - Example: `kubectl edit deployment/nginx-deployment`
+
+7. **`kubectl describe deployments [deployment-name]`**
+   - Usage: Display detailed state of the specified deployment.
+   - Example: `kubectl describe deployments nginx-deployment`
+
+8. **`kubectl rollout undo deployment/[deployment-name]`**
+   - Usage: Roll back to the previous deployment.
+   - Example: `kubectl rollout undo deployment/nginx-deployment`
+
+9. **`kubectl rollout history deployment/[deployment-name]`**
+   - Usage: View the rollout history of a deployment.
+   - Example: `kubectl rollout history deployment/nginx-deployment`
+
+10. **`kubectl rollout undo deployment/[deployment-name] --to-revision=[revision-number]`**
+    - Usage: Roll back to a specific revision of a deployment.
+    - Example: `kubectl rollout undo deployment/nginx-deployment --to-revision=2`
+
+11. **`kubectl scale deployment/[deployment-name] --replicas=[number]`**
+    - Usage: Scale a deployment to a specified number of replicas.
+    - Example: `kubectl scale deployment/nginx-deployment --replicas=10`
+
+12. **`kubectl autoscale deployment/[deployment-name] --min=[min-pods] --max=[max-pods] --cpu-percent=[target-percentage]`**
+    - Usage: Automatically scale a deployment based on observed CPU utilization.
+    - Example: `kubectl autoscale deployment/nginx-deployment --min=10 --max=15 --cpu-percent=80`
+
+13. **`kubectl rollout pause deployment/[deployment-name]`**
+    - Usage: Pause a deployment to stop its rollout.
+    - Example: `kubectl rollout pause deployment/nginx-deployment`
+
+14. **`kubectl rollout resume deployment/[deployment-name]`**
+    - Usage: Resume a paused deployment to continue its rollout.
+    - Example: `kubectl rollout resume deployment/nginx-deployment`
