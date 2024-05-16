@@ -10,7 +10,15 @@ This epic is designed to provide a structured learning path for understanding an
 
 ## Refine Kubernetes Setups
 
+- Task 1: Kubernetes cluster configurations.
+- Task 2: Automate cluster setup with advanced Kubernetes configuration tools.
+- Task 3: Practice advanced kubectl commands and scripts.
+
 ## Working with Pods and Deployments
+
+- Task 1: Create and manage Pods.
+- Task 2: Understand Replicas and Deployments.
+- Task 3: Learn about health checks and readiness probes.
 
 ## Managing State with Volumes
 
