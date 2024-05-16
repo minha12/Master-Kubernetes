@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    app: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: app-container
+        image: nginx:latest
+        resources:
+          requests:
+            memory: "256Mi"  # Minimum memory needed to run efficiently
+            cpu: "500m"      # 0.5 CPU units (500 milliCPU), minimum needed
+          limits:
+            memory: "512Mi"  # Maximum memory this container is allowed to use
+            cpu: "1"         # Maximum of 1 CPU unit (1000 milliCPU) allowed
