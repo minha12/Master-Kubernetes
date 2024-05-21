@@ -1,4 +1,4 @@
-# Creating an SSH key on a Mac for use with GitHub
+## Creating an SSH key on a Mac
 
 ## Check for Existing SSH Keys
 Before you create a new SSH key, check if there are already any SSH keys on your machine, which you might wish to use:
@@ -28,6 +28,43 @@ ssh-add ~/.ssh/id_ed25519
 ```
 
 If you saved your key with a different name, or in a different location, replace `~/.ssh/id_ed25519` with the path and name of your private key file.
+
+## SSH key on Windows PowerShell
+
+Creating an SSH key on Windows 11 using PowerShell and copying it to the clipboard involves a few steps.
+
+### Step 1: Open PowerShell
+
+1. Press `Win + X` and select `Windows Terminal (Admin)` or `Windows PowerShell (Admin)`.
+
+### Step 2: Generate SSH Key
+
+1. In the PowerShell window, type the following command to generate a new SSH key pair:
+
+   ```powershell
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
+
+   Replace `"your_email@example.com"` with your actual email address. This command generates an RSA key with 4096 bits.
+
+2. You will be prompted to specify the file in which to save the key. Press `Enter` to accept the default location (`C:\Users\your_username\.ssh/id_ed25519`).
+
+3. Next, you will be prompted to enter a passphrase. This is optional, but it's recommended for added security. If you do not want to use a passphrase, just press `Enter`.
+
+### Step 3: Copy the Public Key to the Clipboard
+
+1. To copy the contents of your public key to the clipboard, use the following command:
+
+   ```powershell
+   Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub" | clip
+   ```
+
+   This command reads the contents of the public key file and pipes it to the `clip` command, which copies it to the clipboard.
+
+### Step 4: Verify the Public Key is Copied
+
+1. You can verify that the public key is copied to the clipboard by pasting it into a text editor (e.g., Notepad).
+
 
 ## Add the SSH Key to Your GitHub Account
 1. Copy the SSH public key to your clipboard. To copy the contents of the public key file to your clipboard use:
